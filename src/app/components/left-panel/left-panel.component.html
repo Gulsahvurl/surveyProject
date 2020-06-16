@@ -1,0 +1,58 @@
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="ID">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ID}} </mat-cell>
+
+
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> {{(languageState |
+        async)?.selectedLanguage.TagList._SURVEY}}</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+
+
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef>{{(languageState |
+        async)?.selectedLanguage.TagList._REMOVE}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon (click)="deleteSurvey(element.ID)" class="s-16">delete</mat-icon>
+
+      </mat-cell>
+
+    </ng-container>
+    <ng-container matColumnDef="update">
+      <mat-header-cell *matHeaderCellDef>{{(languageState |
+        async)?.selectedLanguage.TagList._UPDATE}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon [routerLink]="['survey/'+element.ID]" class="s-16">create</mat-icon>
+
+      </mat-cell>
+
+    </ng-container>
+
+
+
+
+    <!-- Weight Column -->
+
+
+    <!-- Symbol Column -->
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+
+</div>

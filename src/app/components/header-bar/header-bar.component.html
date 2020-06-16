@@ -1,0 +1,7 @@
+<mat-toolbar class="toolbar">
+  <button mat-button style="background:#fff" [matMenuTriggerFor]="menu" *ngIf="selectedLang">{{selectedLang}}</button>
+  <mat-menu #menu="matMenu">
+    <button *ngFor="let x of language" (click)="selectLanguage(x)" mat-menu-item>{{x.Code}}</button>
+
+  </mat-menu>
+</mat-toolbar>
